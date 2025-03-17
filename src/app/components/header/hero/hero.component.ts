@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { ApiService } from '../../../services/api.service';
 import { CustomUppercasePipe } from '../../../pipes/custom-upper-case.pipe';
-
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-hero',
-  imports: [CustomUppercasePipe],
+  imports: [CustomUppercasePipe, CommonModule],
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.css']
 })
@@ -15,6 +14,7 @@ export class HeroComponent implements OnInit {
   // Declaramos la variable para almacenar el JSON recibido (no es observable)
   pokemon: any;
   pokemonDescription: any;
+  pokemonType: any;
   constructor(private apiService: ApiService) { }
 
   getRandomPokemon(): Observable<any[]> {
@@ -25,7 +25,12 @@ export class HeroComponent implements OnInit {
   getAllDescription(id: number): Observable<any[]> {
     return this.apiService.getPokemonDescription(id);
   }
-
+  getPokemonType(): Observable<any> {
+    this.apiService.getPokemonType().subscribe((data: any) => {
+      this.pokemonType = data.results;
+    })
+    return this.pokemonType;
+  }
   viewRandomPokemon() {
     this.getRandomPokemon().subscribe(data => {
       this.pokemon = data;
@@ -40,5 +45,6 @@ export class HeroComponent implements OnInit {
   }
   ngOnInit(): void {
     this.viewRandomPokemon();
+    this.getPokemonType();
   }
 }

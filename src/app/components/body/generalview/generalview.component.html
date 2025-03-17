@@ -1,41 +1,68 @@
 <div class="bg-gray-950">
     <div class="px-4 pb-24">
         <h1 class="text-center text-white font-bold text-3xl pt-16">Biblioteca - Pokemon</h1>
-        <div class="container flex py-16 mx-auto justify-end">
-            <form class="w-sm" (submit)="buscarPokemon(searchInput.value); $event.preventDefault()">
-                <h1 class="text-white font-semibold text-xl mb-3">Buscador:</h1>
-                <label for="default-search"
-                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
+        <div class="container flex flex-col-reverse lg:flex-row items-start mx-auto py-16">
+            <div class="container mx-auto">
+                <h2 class="text-2xl text-white font-bold mb-8">Tipos de pokemones:</h2>
+                <ul class="flex gap-3 flex-wrap">
+                    @for (type of pokemonType; track $index) {
+                    <li class="nav-item"><button class="py-2 px-4 rounded-2xl cursor-pointer font-bold uppercase"
+                            id="ver-todos" [ngClass]="type.name">{{type.name}}</button></li>
+                    }
+                </ul>
+            </div>
+            <div class="container flex mt-0 mx-auto justify-center lg:justify-end py-16 lg:py-0">
+                <form class="w-sm" (submit)="buscarPokemon(searchInput.value); $event.preventDefault()">
+                    <h1 class="text-white font-semibold  text-2xl mb-8">Buscador:</h1>
+                    <label for="default-search"
+                        class="mb-2 text-2xl font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </div>
+                        <input type="search" id="default-search" #searchInput
+                            class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Search Pokémon by name or id..." />
+                        <button type="submit"
+                            class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Search
+                        </button>
                     </div>
-                    <input type="search" id="default-search" #searchInput
-                        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search Pokémon by name or id..." />
-                    <button type="submit"
-                        class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Search
-                    </button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
+        
+        
         <div
             class="container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto p-4 sm:p-0 flex-wrap gap-5 justify-between">
             <!-- Iteramos sobre la lista paginada -->
             <div *ngFor="let pokemon of pagedPokemonList">
                 <a href="#"
-                    class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:h-[450px] lg:h-80 xl:h-96 2xl:h-80 pb-8">
+                    class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:h-[450px] lg:h-96 xl:h-96 2xl:h-96 pb-8">
                     <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
                         [src]="pokemon.sprites.other['official-artwork'].front_default" alt="">
                     <div class="flex flex-col justify-between p-4 leading-normal">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                            {{ pokemon.name | customUppercase }}
-                        </h5>
+                        <div class="flex gap-4 items-center">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                {{ pokemon.name | customUppercase }}
+                            </h5>
+                            <p class="bg-cyan-400/30 w-max py-2 px-5 my-4 text-white font-bold rounded-xl">#{{
+                                pokemon.id < 10 ? '00' + pokemon.id : (pokemon.id < 100 ? '0' + pokemon.id : pokemon.id)
+                                    }}</p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span *ngFor="let types of pokemon.types">
+                                <p class="py-1 px-2  font-bold rounded-xl text-sm" [ngClass]="types.type.name">
+                                    {{ types.type.name | customUppercase }}
+                                </p>
+                            </span>
+                        </div>
+
                         <div class="flex text-white text-xl gap-4 lg:gap-8 py-4 flex-wrap">
                             <div class="flex gap-2 justify-around items-center">
                                 <i class="fa-solid fa-ruler"></i>
@@ -63,22 +90,22 @@
         <!-- Controles de paginación -->
         <div class="flex flex-wrap justify-center items-center mt-8 gap-2">
             <button (click)="prevPage()" [disabled]="currentPage === 1"
-                    class="mx-2 px-3 py-1 bg-gray-700 text-white rounded cursor-pointer hover:bg-gray-600 focus:bg-gray-600 active:bg-blue-700">
-              Prev
+                class="mx-2 px-3 py-1 bg-gray-700 text-white rounded cursor-pointer hover:bg-gray-600 focus:bg-gray-600 active:bg-blue-700">
+                Prev
             </button>
             <ng-container *ngFor="let page of pages">
-              <button (click)="setPage(page)" 
-                      [ngClass]="{'bg-blue-500': currentPage === page, 'bg-gray-700': currentPage !== page}"
-                      class="mx-1 px-3 py-1 text-white rounded cursor-pointer hover:bg-gray-600 focus:bg-gray-600 active:bg-blue-700">
-                {{ page }}
-              </button>
+                <button (click)="setPage(page)"
+                    [ngClass]="{'bg-blue-500': currentPage === page, 'bg-gray-700': currentPage !== page}"
+                    class="mx-1 px-3 py-1 text-white rounded cursor-pointer hover:bg-gray-600 focus:bg-gray-600 active:bg-blue-700">
+                    {{ page }}
+                </button>
             </ng-container>
             <button (click)="nextPage()" [disabled]="currentPage === totalPages"
-                    class="mx-2 px-3 py-1 bg-gray-700 text-white rounded cursor-pointer hover:bg-gray-600 focus:bg-gray-600 active:bg-blue-700">
-              Next
+                class="mx-2 px-3 py-1 bg-gray-700 text-white rounded cursor-pointer hover:bg-gray-600 focus:bg-gray-600 active:bg-blue-700">
+                Next
             </button>
-          </div>
-          
+        </div>
+
 
     </div>
 </div>

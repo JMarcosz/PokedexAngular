@@ -16,6 +16,7 @@ export class GeneralviewComponent implements OnInit {
   pokemonDescription: any[] = [];
   request$: any[] = [];
   pokemonSearch: any;
+  pokemonType: any;
 
   // Paginación
   currentPage: number = 1;
@@ -23,6 +24,12 @@ export class GeneralviewComponent implements OnInit {
 
   constructor(private apiService: ApiService) { }
 
+  getPokemonType(): Observable<any> {
+    this.apiService.getPokemonType().subscribe((data: any) => {
+      this.pokemonType = data.results;
+    })
+    return this.pokemonType;
+  }
   getAllPokemon(): Observable<any[]> {
     const requests = [];
     for (let i = 1; i <= 151; i++) {
@@ -98,7 +105,7 @@ export class GeneralviewComponent implements OnInit {
     this.getAllPokemon().subscribe(data => {
       this.pokemonList$ = data;
     });
-
+    this.getPokemonType();
     this.getAllDescription().subscribe(data => {
       this.request$ = data;
       this.request$.forEach((pokemon: any) => {

@@ -14,6 +14,9 @@ export class ApiService {
   getPokemonList(limit: number = 100): Observable<any> {
     return this.http.get(`${this.apiUrl}/pokemon?limit=${limit}`);
   }
+  getPokemonType(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/type`);
+  }
 
   getPokemonDescription(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/pokemon-species/${id}`);
