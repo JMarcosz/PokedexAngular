@@ -1,0 +1,30 @@
+<header class="pt-4">
+    <div class="container  mx-auto flex justify-between items-center p-4 sm:p-0">
+        <a href="/">
+            <div class="flex gap-4 items-center text-white">
+                <p class="text-2xl font-bold">Home</p>
+                <i class="fa-solid fa-house"></i>
+            </div>
+        </a>
+        
+        <div class="relative" x-data="{ open: false }">
+            <button class="bg-gray-800/30 flex justify-center items-center gap-3 rounded-md px-2 py-1 cursor-pointer"
+                (click)="DropDown()">
+                <img class="w-10 rounded-full"
+                    src="https://img.freepik.com/vector-premium/imagen-perfil-avatar-hombre-aislada-fondo-imagen-profil-avatar-hombre_1293239-4866.jpg"
+                    alt="">
+                <p class="text-white font-semibold">Jean Marte</p>
+            </button>
+            <div class="bg-gray-800/60 flex flex-col w-full rounded-b-lg text-center text-sm text-white transition-all duration-400 ease-in-out transform  overflow-hidden absolute mt-[-2px]"
+                [ngClass]="{
+                    ' max-h-0 pointer-events-none': !open,
+                    ' max-h-[140px]': open
+                    }">
+                <a class="block border-b border-white last:border-0 py-3 hover:bg-gray-800/70 hover:text-white transition-colors duration-200 ease-in-out"
+                    href="">Herramientas</a>
+                <a (click)="Logout()" class="block py-3 hover:bg-gray-800/70 hover:text-white transition-colors duration-200 ease-in-out"
+                    href="">Cerrar Sesión</a>
+            </div>
+        </div>
+    </div>
+</header>

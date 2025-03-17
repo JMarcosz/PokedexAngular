@@ -1,0 +1,54 @@
+<header class="hero">
+    <ng-content></ng-content>
+    <div class="w-64 md:w-96 mx-auto">
+        <img class="" src="/logo-pokemon.png" alt="">
+    </div>
+
+    <div
+        class="container m-auto md:flex justify-between items-center flex-row-reverse px-4 sm:px-0 pb-24 sm:gap-8 lg:gap-16 2xl:gap-32">
+        <div class="flex flex-col flex-3/6 px-8 mx-auto sm:px-0 my-16 md:my-0"> <!-- colum2 -->
+            <img class="" [src]='pokemon.sprites.other["official-artwork"].front_default' alt="">
+        </div>
+
+        <div class="flex flex-col flex-2/5 "> <!-- colum1 -->
+
+            <div class="flex flex-col bg-green-100/20 rounded-lg px-8 py-12 gap-4 text-lg">
+                <h2 class="text-4xl text-[#22326d] font-bold ">{{pokemon.name | customUppercase}}</h2>
+                <p class="bg-gray-800/20 w-max py-2 px-8 text-white font-bold rounded-xl">#{{ pokemon.id < 10 ? '00' +
+                        pokemon.id : (pokemon.id < 100 ? '0' + pokemon.id : pokemon.id) }}</p>
+
+                        <div class="flex text-gray-800 font-bold text-lg md:text-xl gap-8 py-3">
+                            <div class="flex gap-2 justify-around items-center">
+                                <i class="fa-solid fa-ruler"></i>
+                                <p class="stat">{{pokemon.height}}Mt</p>
+
+                            </div>
+                            <div class="flex gap-2 justify-around items-center">
+                                <i class="fa-solid fa-dumbbell"></i>
+                                <p class="stat">{{pokemon.weight}}Kg</p>
+                            </div>
+
+                        </div>
+                        <p class="text-white font-semibold text-xl lg:text-2xl py-3">{{pokemonDescription}}</p>
+                        <div class="flex flex-col gap-5 py-3">
+                            <div class="flex flex-wrap gap-4">
+                                @for (abilities of pokemon.abilities; track $index) {
+                                <p
+                                    class="py-1 px-2 bg-amber-500/90 text-white font-bold rounded-lg text-base md:text-lg">
+                                    {{abilities.ability.name | customUppercase}}</p>
+                                }
+                            </div>
+                        </div>
+            </div>
+            <button (click)="viewRandomPokemon()"
+                class="bg-[#22326d] text-lg text-white font-bold py-3 px-4 my-6 mx-auto rounded-md  hover:bg-[#1e2b5a] cursor-pointer">Random
+                Pokemon</button>
+        </div>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
+        <path fill="#030712" fill-opacity="1"
+            d="M0,96L120,117.3C240,139,480,181,720,176C960,171,1200,117,1320,90.7L1440,64L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z">
+        </path>
+    </svg>
+</header>

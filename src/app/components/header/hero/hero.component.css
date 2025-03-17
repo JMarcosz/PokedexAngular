@@ -1,0 +1,34 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  /* background: rgb(131, 58, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  ); */
+
+  background: rgb(139, 211, 212);
+  background: radial-gradient(
+    circle,
+    rgba(139, 211, 212, 1) 0%,
+    rgba(102, 175, 165, 1) 31%,
+    rgba(69, 181, 165, 1) 48%,
+    rgba(159, 201, 119, 1) 92%
+  );
+  /* background-image: url('https://static.vecteezy.com/system/resources/previews/001/849/097/non_2x/light-red-yellow-abstract-backdrop-vector.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; */
+}
+
+svg {
+  display: block; /* Evita espacios en blanco debajo del SVG (comportamiento inline) */
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  height: auto; /* Ajusta la altura automáticamente, manteniendo el aspecto */
+  margin: 0; /* Opcional, por si tu hoja de estilo define algún margen por defecto */
+  padding: 0; /* Igual para el padding */
+  position: absolute;
+  bottom: 0px;
+}
