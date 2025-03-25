@@ -33,103 +33,101 @@ svg {
   bottom: 0px;
 }
 
-
 .normal {
-  background-color: #A8A878;
-  color: #1c1c1c;
+  background-color: #a8a878;
+  color: #fff;
 }
 
 .fire {
-  background-color: #F08030;
+  background-color: #f08030;
   color: #fff;
 }
 
 .water {
-  background-color: #6890F0;
-  color: #f7f7f7;
+  background-color: #6890f0;
+  color: #fff;
 }
 
 .grass {
-  background-color: #78C850;
-  color: #1c1c1c;
+  background-color: #78c850;
+  color: #fff;
 }
 
 .electric {
-  background-color: #F8D030;
-  color: #1c1c1c;
+  background-color: #f8d030;
+  color: #fff;
 }
 
 .ice {
-  background-color: #98D8D8;
-  color: #1c1c1c;
+  background-color: #98d8d8;
+  color: #fff;
 }
 
 .fighting {
-  background-color: #C03028;
-  color: #f7f7f7;
+  background-color: #c03028;
+  color: #fff;
 }
 
 .poison {
-  background-color: #A040A0;
-  color: #f7f7f7;
+  background-color: #a040a0;
+  color: #fff;
 }
 
 .ground {
-  background-color: #E0C068;
-  color: #1c1c1c;
+  background-color: #e0c068;
+  color: #fff;
 }
 
 .flying {
-  background-color: #A890F0;
-  color: #1c1c1c;
+  background-color: #a890f0;
+  color: #fff;
 }
 
 .psychic {
-  background-color: #F85888;
-  color: #1c1c1c;
+  background-color: #f85888;
+  color: #fff;
 }
 
 .bug {
-  background-color: #A8B820;
-  color: #1c1c1c;
+  background-color: #a8b820;
+  color: #fff;
 }
 
 .rock {
-  background-color: #B8A038;
-  color: #1c1c1c;
+  background-color: #b8a038;
+  color: #fff;
 }
 
 .ghost {
   background-color: #705898;
-  color: #f7f7f7;
+  color: #fff;
 }
 
 .dark {
   background-color: #705848;
-  color: #f7f7f7;
+  color: #fff;
 }
 
 .dragon {
-  background-color: #7038F8;
+  background-color: #7038f8;
   color: #f7f7f7;
 }
 
 .steel {
-  background-color: #B8B8D0;
-  color: #1c1c1c;
+  background-color: #b8b8d0;
+  color: #fff;
 }
 
 .fairy {
-  background-color: #F0B6BC;
-  color: #1c1c1c;
+  background-color: #f0b6bc;
+  color: #fff;
 }
-
-.stellar{
+.stellar {
   background-color: #4a235a;
   color: #fff;
 }
 
-.unknown{
-  background-color: #4a4d4e ;
+.unknown {
+  background-color: #4a4d4e;
   color: #fff;
 }

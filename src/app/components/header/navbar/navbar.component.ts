@@ -11,13 +11,13 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class NavbarComponent {
   open: boolean = false;
-  constructor (private AuthService:AuthService){}
+  constructor(private AuthService: AuthService) { }
   DropDown() {
     this.open = !this.open;
     console.log(this.open);
   }
 
-  Logout(){
+  Logout() {
     this.AuthService.logout();
   }
 }

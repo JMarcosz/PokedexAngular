@@ -17,12 +17,25 @@ export class GeneralviewComponent implements OnInit {
   request$: any[] = [];
   pokemonSearch: any;
   pokemonType: any;
-
+  PokemonByTypes: any[] = [];
+  toglee: boolean = false;
   // Paginación
   currentPage: number = 1;
   pageSize: number = 9;
 
   constructor(private apiService: ApiService) { }
+
+  getByTypes(tipo: string) {
+    this.PokemonByTypes = [];
+    this.getAllPokemon().subscribe(data => {
+      this.pokemonList$ = data;
+      this.PokemonByTypes = this.pokemonList$.filter((pokemon: any) => {
+        return pokemon.types.some((t: any) => t.type.name === tipo);
+      });
+      this.pokemonList$ = this.PokemonByTypes;
+    });
+
+  }
 
   getPokemonType(): Observable<any> {
     this.apiService.getPokemonType().subscribe((data: any) => {
@@ -53,7 +66,11 @@ export class GeneralviewComponent implements OnInit {
         this.pokemonList$ = [data];
         // Reiniciamos la paginación
         this.currentPage = 1;
+        if(!this.apiService.getPokemonByName(searchTerm)){
+          console.log("Error")
+        }
       });
+      
     } else {
       this.getAllPokemon().subscribe(data => {
         this.pokemonList$ = data;
@@ -101,18 +118,20 @@ export class GeneralviewComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  verTodos(){
     this.getAllPokemon().subscribe(data => {
       this.pokemonList$ = data;
     });
+  }
+  ngOnInit(): void {
+    this.verTodos();
     this.getPokemonType();
     this.getAllDescription().subscribe(data => {
       this.request$ = data;
       this.request$.forEach((pokemon: any) => {
         // Suponemos que el arreglo se llama flavor_text_entries
         const descripcionEs = pokemon.flavor_text_entries.find((entry: any) => entry.language.name === 'es');
-        const descripcionEn = pokemon.flavor_text_entries.find((entry: any) => entry.language.name === 'en');
-        this.pokemonDescription.push(descripcionEs ? descripcionEs.flavor_text : descripcionEn.flavor_text);
+        this.pokemonDescription.push(descripcionEs ? descripcionEs.flavor_text : "No se encontro una descrpcion para este pokemon");
       });
     });
   }

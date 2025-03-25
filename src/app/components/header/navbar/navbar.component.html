@@ -6,7 +6,7 @@
                 <i class="fa-solid fa-house"></i>
             </div>
         </a>
-        
+
         <div class="relative" x-data="{ open: false }">
             <button class="bg-gray-800/30 flex justify-center items-center gap-3 rounded-md px-2 py-1 cursor-pointer"
                 (click)="DropDown()">
@@ -20,9 +20,8 @@
                     ' max-h-0 pointer-events-none': !open,
                     ' max-h-[140px]': open
                     }">
-                <a class="block border-b border-white last:border-0 py-3 hover:bg-gray-800/70 hover:text-white transition-colors duration-200 ease-in-out"
-                    href="">Herramientas</a>
-                <a (click)="Logout()" class="block py-3 hover:bg-gray-800/70 hover:text-white transition-colors duration-200 ease-in-out"
+                <a (click)="Logout()"
+                    class="block py-3 hover:bg-gray-800/70 hover:text-white transition-colors duration-200 ease-in-out"
                     href="">Cerrar Sesión</a>
             </div>
         </div>

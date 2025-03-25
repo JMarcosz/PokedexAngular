@@ -12,7 +12,8 @@
             <div class="flex flex-col bg-green-100/20 rounded-lg px-8 py-12 gap-4 text-lg">
                 <div class="flex gap-6">
                     <h2 class="text-4xl text-[#22326d] font-bold ">{{pokemon.name | customUppercase}}</h2>
-                    <p class="bg-gray-800/20 w-max py-1 px-4 text-white font-bold rounded-xl text-center">#{{ pokemon.id
+                    <p class="bg-gray-800/20 w-max py-1 px-4 text-white font-bold rounded-xl text-center text-2xl">#{{
+                        pokemon.id
                         < 10 ? '00' + pokemon.id : (pokemon.id < 100 ? '0' + pokemon.id : pokemon.id) }}</p>
                 </div>
 
@@ -23,7 +24,7 @@
                         </p>
                     </span>
                 </div>
-                <div class="flex text-gray-800 font-bold text-lg md:text-xl gap-8 py-3">
+                <div class="flex text-gray-100 font-bold text-lg md:text-2xl gap-8 py-3">
                     <div class="flex gap-2 justify-around items-center">
                         <i class="fa-solid fa-ruler"></i>
                         <p class="stat">{{pokemon.height}}Mt</p>
